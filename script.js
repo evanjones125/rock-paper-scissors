@@ -1,7 +1,7 @@
+//randomly return either rock, paper or scissors
 const computerPlay = () => {
-    //randomly return either rock, paper or scissors
-    //if num < 0.333, return rock, ...
     const ranNum = Math.random();
+    console.log(ranNum);
 
     if (ranNum <= 0.33333) {
         return "rock";
@@ -12,10 +12,7 @@ const computerPlay = () => {
     }
 }
 
-console.log(computerPlay());
-
-//get input from user; use it for playerSelection
-//create function that takes user input and converts it to num 1-3
+//get play from user
 const userPlay = () => {
     let playerInput = prompt("enter your move: ");
     
@@ -30,16 +27,12 @@ const userPlay = () => {
     }
 }
 
-// console.log(userPlay());
-
+//store outputs of play functions in variables
 const computerSelection = computerPlay();
 const playerSelection = userPlay();
 
+//plays a single round
 const playRound = (playerSelection, computerSelection) => {
-    //takes in player and computer selection
-    //returns a string that declares a winner
-
-    //if pS beats cS, return "You win!"
     if (playerSelection === computerSelection) {
         return `draw! you played ${playerSelection} and the computer played ${computerSelection}. enter another number`;
     } else if (playerSelection === "rock" && computerSelection === "paper") {
