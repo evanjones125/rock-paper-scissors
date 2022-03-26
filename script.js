@@ -16,11 +16,11 @@ const computerPlay = () => {
 const userPlay = () => {
     let playerInput = prompt("enter your move: ");
     
-    if (playerInput == "rock") {
+    if (playerInput.toLowerCase() == "rock") {
         return "rock";
-    } else if (playerInput == "paper") {
+    } else if (playerInput.toLowerCase() == "paper") {
         return "paper";
-    } else if (playerInput == "scissors") {
+    } else if (playerInput.toLowerCase() == "scissors") {
         return "scissors";
     } else {
         return null;
@@ -55,6 +55,9 @@ const game = (playRound) => {
     //initiates a 5-round game
     //keeps score
     //outputs a report on who won or lost
+    // if (playRound.includes("computer wins")) {
+    //     console.log("shrek");
+    // }
 }
 
 console.log(playRound(playerSelection, computerSelection));
