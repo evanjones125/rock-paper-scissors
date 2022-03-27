@@ -33,6 +33,8 @@ const playerSelection = userPlay();
 
 //plays a single round
 const playRound = (playerSelection, computerSelection) => {
+    
+    
     if (playerSelection === computerSelection) {
         return `draw! you played ${playerSelection} and the computer played ${computerSelection}. enter another number`;
     } else if (playerSelection === "rock" && computerSelection === "paper") {
@@ -50,14 +52,31 @@ const playRound = (playerSelection, computerSelection) => {
     }
 }
 
-const game = (playRound) => {
-    //calls playRound
-    //initiates a 5-round game
-    //keeps score
-    //outputs a report on who won or lost
-    // if (playRound.includes("computer wins")) {
-    //     console.log("shrek");
-    // }
+//runs playRound five times; keeps track of score and reports results
+const game = () => {
+    let computerScore = 0;
+    let playerScore = 0;
+
+    for (let i = 0; i < 5; i++) {
+        playRound();
+        console.log(playRound(playerSelection, computerSelection));
+        
+        if (playRound(playerSelection, computerSelection).includes("computer wins")) {
+            computerScore++;
+        } else if (playRound(playerSelection, computerSelection).includes("you win")) {
+            playerScore++;
+        } else if (playRound(playerSelection, computerSelection).includes("draw")) {
+            playerScore = playerScore;
+        }
+    }
+
+    if (computerScore > playerScore) {
+        return `the computer won with ${computerScore} points to your ${playerScore} points`
+    } else if (playerScore > computerScore) {
+        return `you won with ${playerScore} points to the computer's ${computerScore} points`
+    } else if (playerScore === computerScore) {
+        return `tie after five rounds; you each got ${playerScore} points`
+    }
 }
 
-console.log(playRound(playerSelection, computerSelection));
+console.log(game(playRound));
